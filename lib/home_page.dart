@@ -1,7 +1,7 @@
-
 import 'package:basketball_points/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
@@ -31,148 +31,157 @@ class HomePage extends StatelessWidget {
             ),
             backgroundColor: Colors.orange,
           ),
-          body: Column(
-            children: [
-              const Spacer(flex: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      const Text(
-                        "Team A",
-                        style: TextStyle(
-                          fontSize: 42,
-                          // fontWeight: FontWeight.bold,
+          body: Container(
+            margin: const EdgeInsets.only(left: 10),
+            child: Column(
+              children: [
+                const Spacer(
+                  flex: 1,
+                ),
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Team A",
+                          style: TextStyle(
+                            fontSize: 42.sp,
+                            // fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "${BlocProvider.of<CounterCubit>(context).teamAPoint}",
-                        style: const TextStyle(
-                          fontSize: 150,
-                          // fontWeight: FontWeight.bold,
+                        Text(
+                          "${BlocProvider.of<CounterCubit>(context).teamAPoint}",
+                          style: const TextStyle(
+                            fontSize: 150,
+                            // fontWeight: FontWeight.bold,
+                          ),
                         ),
+                        Button(
+                            addpoints: 'Add 1 points',
+                            onPressed: () {
+                              BlocProvider.of<CounterCubit>(context)
+                                  .teamIncrement(
+                                buttonNumber: 1,
+                                team: "A",
+                              );
+                            }),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        Button(
+                            addpoints: 'Add 2 points',
+                            onPressed: () {
+                              BlocProvider.of<CounterCubit>(context)
+                                  .teamIncrement(
+                                buttonNumber: 2,
+                                team: "A",
+                              );
+                            }),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Button(
+                            addpoints: 'Add 3 points',
+                            onPressed: () {
+                              BlocProvider.of<CounterCubit>(context)
+                                  .teamIncrement(
+                                buttonNumber: 3,
+                                team: "A",
+                              );
+                            }),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 400.h,
+                      child: const VerticalDivider(
+                        color: Colors.grey,
+                        thickness: 1,
                       ),
-                      Button(
-                          addpoints: 'Add 1 points',
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context)
-                                .teamIncrement(
-                              buttonNumber: 1,
-                              team: "A",
-                            );
-                          }),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Button(
-                          addpoints: 'Add 2 points',
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context)
-                                .teamIncrement(
-                              buttonNumber: 2,
-                              team: "A",
-                            );
-                          }),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Button(
-                          addpoints: 'Add 3 points',
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context)
-                                .teamIncrement(
-                              buttonNumber: 3,
-                              team: "A",
-                            );
-                          }),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                    ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Team B",
+                          style: TextStyle(
+                            fontSize: 42.sp,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "${BlocProvider.of<CounterCubit>(context).teamBPoint}",
+                          style: TextStyle(
+                            fontSize: 150.sp,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Button(
+                            addpoints: 'Add 1 points',
+                            onPressed: () {
+                              BlocProvider.of<CounterCubit>(context)
+                                  .teamIncrement(
+                                buttonNumber: 1,
+                                team: "B",
+                              );
+                            }),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        Button(
+                            addpoints: 'Add 2 points',
+                            onPressed: () {
+                              BlocProvider.of<CounterCubit>(context)
+                                  .teamIncrement(
+                                buttonNumber: 2,
+                                team: "B",
+                              );
+                            }),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        Button(
+                            addpoints: 'Add 3 points',
+                            onPressed: () {
+                              BlocProvider.of<CounterCubit>(context)
+                                  .teamIncrement(
+                                buttonNumber: 3,
+                                team: "B",
+                              );
+                            }),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const Spacer(
+                  flex: 1,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(184.7, 60),
+                    backgroundColor: Colors.orange,
                   ),
-                  const SizedBox(
-                    height: 400,
-                    child: VerticalDivider(
-                      color: Colors.grey,
-                      thickness: 1,
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).reset();
+                  },
+                  child: Text(
+                    "Reset",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24.sp,
                     ),
                   ),
-                  Column(
-                    children: [
-                      const Text(
-                        "Team B",
-                        style: TextStyle(
-                          fontSize: 42,
-                          // fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "${BlocProvider.of<CounterCubit>(context).teamBPoint}",
-                        style: const TextStyle(
-                          fontSize: 150,
-                          // fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Button(
-                          addpoints: 'Add 1 points',
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context)
-                                .teamIncrement(
-                              buttonNumber: 1,
-                              team: "B",
-                            );
-                          }),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Button(
-                          addpoints: 'Add 2 points',
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context)
-                                .teamIncrement(
-                              buttonNumber: 2,
-                              team: "B",
-                            );
-                          }),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Button(
-                          addpoints: 'Add 3 points',
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context)
-                                .teamIncrement(
-                              buttonNumber: 3,
-                              team: "B",
-                            );
-                          }),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const Spacer(flex: 2),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(150, 60),
-                  backgroundColor: Colors.orange,
                 ),
-                onPressed: () {
-                  BlocProvider.of<CounterCubit>(context).reset();
-                },
-                child: const Text(
-                  "Reset",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              const Spacer(flex: 1),
-            ],
+                const Spacer(
+                  flex: 3,
+                )
+              ],
+            ),
           ),
         );
       },
@@ -195,7 +204,8 @@ class Button extends StatelessWidget {
   ) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(150, 60),
+        minimumSize: Size(140.h, 60.w),
+        // maximumSize: Size(140.h, 80.w),
         backgroundColor: Colors.orange,
       ),
       onPressed: onPressed,
@@ -205,7 +215,7 @@ class Button extends StatelessWidget {
         addpoints,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 24,
+          fontSize: 18,
         ),
       ),
     );

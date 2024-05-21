@@ -2,7 +2,8 @@
 import 'package:basketball_points/cubit/counter_cubit.dart';
 import 'package:basketball_points/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; // Import the necessary package
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import the necessary package
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CounterCubit(),
-      child:  const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomePage(),
+      child:  const ScreenUtilInit(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: HomePage(),
+        ),
       ),
     );
   }
